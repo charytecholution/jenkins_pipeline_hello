@@ -1,23 +1,9 @@
 pipeline {
-    agent any
-
+    agent { docker 'maven:3.3.3' }
     stages {
-        stage('Build') {
+        stage('build') {
             steps {
-                def mvnHome = tool 'M3'
-                sh "${mvnHome}/bin/mvn -B -Dmaven.test.failure.ignore verify"
-                step([$class: 'JUnitResultArchiver', testResults:
-                '**/target/foobar/TEST-*.xml'])
-            }
-        }
-        stage('Test') {
-            steps {
-                echo 'Testing..'
-            }
-        }
-        stage('Deploy') {
-            steps {
-                echo 'Deploying....'
+                sh 'mvn --version'
             }
         }
     }
