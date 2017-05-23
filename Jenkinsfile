@@ -1,7 +1,21 @@
-node {
-    // Use the shell to create the file 'script.groovy' 
-    sh '''echo '
-    echo "Hello from script"
-    ' > script.groovy'''
-    load 'script.groovy'
+pipeline {
+    agent any
+
+    stages {
+        stage('Build') {
+            steps {
+                echo 'Building..'
+            }
+        }
+        stage('Test') {
+            steps {
+                echo 'Testing..'
+            }
+        }
+        stage('Deploy') {
+            steps {
+                echo 'Deploying....'
+            }
+        }
+    }
 }
