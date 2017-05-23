@@ -1,6 +1,7 @@
 node {
-   stage 'Stage 1'
-   		echo 'Hello World 1'
-   stage 'Stage 2'
-   		echo 'Hello World 2'
+    // Use the shell to create the file 'script.groovy' 
+    sh '''echo '
+    echo "Hello from script"
+    ' > script.groovy'''
+    load 'script.groovy'
 }
